@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "ccs",
+    "password": "comet123$",
+    "database": "internal_database_development",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "ccs",
+    "password": "comet123$",
+    "database": "internal_database_test",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "ccs",
+    "password": "comet123$",
+    "database": "internal_database_production",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
