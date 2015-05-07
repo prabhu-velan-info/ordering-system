@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title><%= title %></title>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/javascripts/order.js"></script>
+
+    <!-- Adding Bootstrap 3  -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>  
+    
+</head>
+<body>
+<div class="container">
+		<legend>
+				<center>LOGIN</center>
+		</legend>
+	<div class="row">
+
+		<!-- Row content-->
+		<div class ="col-sm-5 col-sm-offset-3">
+			<form name = "myForm" class="form-horizontal" onsubmit="return validate()" method="POST" action="/login" >
+ 				
+ 				<div class="form-group">
+				    <label for="inputName" class="col-sm-2 control-label">Usrename</label>
+				    <div class="col-sm-10">
+				    	<input type="text" name = "email" id = "email" class="form-control" placeHolder = "Username">
+			    	</div>
+			  	</div>
+
+
+				<div class="form-group">
+					<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" name = "password" id = "password" placeHolder = "Password" class="form-control">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-5">
+						<input type="submit" value="Login", id="submit" name="submit" class="btn btn-info">
+						<input type="reset" value="Cancel" id = "cancel" name = "reset" class="btn btn-info">
+					</div>
+				</div>
+				
+				<div class="form-group">
+				    <div class="col-sm-12 error" id="state">
+					    <% if (message.length > 0) { %>	
+					    	<h3 id = "error" class="alert alert-danger "><%= message %></h3>
+						<% } %>
+				    </div>
+				</div>
+
+			</form>
+		</div>
+		
+	</div>
+
+</div>
+
+<% include ../footer %>
+
+<script>
+	// This will execute once the Document Ready
+	$(document).ready(function(){
+		resetMenu();
+		selectedMenu("#log");
+		setEnterKeyForSubmit("#myForm");
+		$("#menu").hide();
+	});
+
+	function validate(){
+	  
+	    if($("#email").val().length == 0){
+	        showNotification("Email field should not be empty!", false);
+	        return false;
+	    }
+	    if(IsEmail($("#email").val()) == false){
+		      showNotification("Invalid email address!", false);
+	        return false;
+		  }
+	   
+	    if($("#password").val().length == 0){
+		  		showNotification("Password field should not be empty!", false);
+	      return false;
+		  }
+	    return true;
+	}
+</script>

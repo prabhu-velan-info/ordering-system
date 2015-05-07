@@ -1,0 +1,76 @@
+<% include ../../header %>
+
+<div class="container">
+	<legend>
+				<center>ADD CATEGORY</center>
+		</legend>
+	<div class="row">
+
+		<!-- Row content-->
+		<div class ="col-sm-6 col-sm-offset-2">
+			<form class="form-horizontal" id = "myForm" enctype="multipart/form-data" onsubmit="return validateForm('#myForm')" action="/addCategory" method="post">
+			 
+			  <div class="form-group">
+			    <label for="inputName" class="col-sm-4 control-label">Category Name</label>
+			    <div class="col-sm-8">
+			    	<input type="text" name = "categoryName" id = "categoryName" class="form-control" placeHolder = "Name" >
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="inputEmail" class="col-sm-4 control-label">Category Image</label>
+			    <div class="col-sm-8">
+			    	<input type="file" name = "myFile" id = "FileName"  placeHolder = "Name" >	
+			    	<p class="help-block">Choose a image for category.</p>		    	
+			    </div>
+			  </div>		  	
+
+			  <div class="form-group">
+			    <div class="col-sm-offset-4 col-sm-5">
+				    
+				    <input type="button" value="Add Category", id="submit" name="submit" class="btn btn-info" onclick="addCategory('#myForm')">
+
+					<input type="reset" value="Cancel" id = "cancel" name = "reset" class="btn btn-info">		    
+			    </div>
+			  </div>
+			  <!-- To display the loading button -->
+			  <div id="loading" align="center"></div>
+			  <!-- content for showing the error-->
+	<!-- 		  <div class="form-group">
+			    <div class="col-sm-12 error" id="state">
+				    
+			    </div>
+			  </div> -->
+			  <div id = "state" >
+				 <% if (message != undefined) { %>	
+			    	<h3 id="error" class="alert alert-success "><%= message %></h3>
+				 <% } %>
+			</div> 
+			</form>
+		</div>
+		
+	</div>
+
+</div>
+
+
+<% include ../../footer %>
+
+<script>
+	//This will execute once the Document Ready
+	$(document).ready(function(){
+		loggedIn();		
+		resetMenu();
+		selectedMenu("#category");
+		//showing crud options
+		showCrud();
+		selectedMenu("#add");
+		//reset the Curd Actions
+		resetCRUDAction("category");
+
+		$("#myForm input").keydown(function(e){
+		if(e.keyCode == 13)
+			addCategory('#myForm');
+		});	
+	});	
+</script>

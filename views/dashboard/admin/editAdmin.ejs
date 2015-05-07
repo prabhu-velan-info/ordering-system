@@ -1,0 +1,71 @@
+<% include ../../header %>
+
+<div class="container">
+	<legend>
+			<center>EDIT ADMIN</center>
+	</legend>
+	<div class="row">
+
+		<!-- Row content-->
+		<div class ="col-sm-5 col-sm-offset-3">
+			<form class="form-horizontal" id = "myForm" method = "post" onsubmit="return validate('#myForm')" action="/editAdmin/<%= data.id %>">
+			 
+			  <div class="form-group">
+			    <label for="inputName" class="col-sm-2 control-label">Name</label>
+			    <div class="col-sm-10">
+			    	<input type="text" value = "<%= data.name %>" name = "name" id = "Name" class="form-control" placeHolder = "Name" >
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+			    <div class="col-sm-10">
+			    	<input type="text" value = "<%= data.email%>" name = "email" id = "Email" class="form-control" placeHolder = "Email" >
+			    </div>
+			  </div>
+		  		
+		  	  <div class="form-group">
+			    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+			    <div class="col-sm-10">
+			    	<input type="password" name = "password" id = "Password" placeHolder = "Password" class="form-control" >
+			    </div>
+			  </div>
+
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-8">
+					<input type="submit" value="Update Admin", id="submit" name="submit" class="btn btn-info"> 
+					<input type="reset" value="Cancel" id = "cancel" name = "reset" class="btn btn-info">		    
+			    </div>
+			  </div>
+			  <!-- To display the loading button -->
+			  <div id="loading" align="center"></div>			 
+			  <!-- content for showing the error -->
+			  <div class="form-group">
+			    <div class="col-sm-12 error" id="state">
+				    
+			    </div>
+			  </div>
+			</form>
+		</div>
+		
+	</div>
+
+</div>
+
+
+<% include ../../footer %>
+
+<script>
+	//This will execute once the Document Ready
+	$(document).ready(function(){
+		loggedIn();		
+		resetMenu();
+		selectedMenu("#admin");
+		showCrud();
+		// selectedMenu("#edit");
+		//reset the Curd Actions
+		resetCRUDAction("admin");
+		setEnterKeyForSubmit("#myForm");
+
+	});	
+</script>

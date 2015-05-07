@@ -1,0 +1,36 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>Node Authentication</title>
+	
+</head>
+<body>
+	<form action="/signup" method="post">
+	<table>
+		<tr><td><h1>Sign up</h1></td></tr>
+		<% if (message.length > 0) { %>
+				<div class="alert alert-danger"><%= message %></div>
+		<% } %>
+
+		<tr>
+			<td>Username : </td> 
+			<td><input type="text" class="form-control" name="email"></td>
+		</tr>
+
+		<tr>
+			<td>Password : </td> 
+			<td><input type="password" class="form-control" name="password"></td>
+		</tr>
+		<tr>
+			<td><button type="submit" class="btn btn-warning btn-lg">Login</button></td> 
+		</tr>
+		<tr>
+			<td><p>Need an account? <a href="/signup">Signup</a></p>
+		<p>Or go <a href="/">home</a>.</p></td>
+		</tr>
+
+	</table>
+	</form>
+</body>
+</html>

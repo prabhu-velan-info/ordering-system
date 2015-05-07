@@ -1,0 +1,69 @@
+<% include ../../header %>
+
+<div class="container">
+	<legend>
+				<center>SETTINGS</center>
+		</legend>
+	<div class="row">
+
+		<!-- Row content-->
+		<div class ="col-sm-5 col-sm-offset-3">
+			<form class="form-horizontal" id = "myForm">
+			 
+				
+				<div class="row form-group">
+						<div class="col-sm-8 col-sm-offset-3">
+						<select class="form-control" id="timeZone" name="selectTimeZone"></select>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-sm-5 col-sm-offset-5">
+						 <input type="button" value="Change Time Zone", id="chageTimeZone" name="chageTimeZone" class="btn btn-info" >
+					</div>
+				</div>
+			  <!-- To display the loading button -->
+			  <div id="loading" class = "col-sm-10 col-sm-offset-2" align="center"></div>
+				 <!-- content for showing the error-->
+				<div class="form-group">
+					<div class="col-sm-10 col-sm-offset-2 error" id="state">
+					    
+					</div>
+				</div>
+				
+				<script>
+					$('select').timezones();
+				</script>
+			 
+			 </form>
+		</div>
+		
+		</div>
+		
+	</div>
+
+</div>
+
+
+<% include ../../footer %>
+
+<script>
+	//This will execute once the Document Ready
+	$(document).ready(function(){
+		loggedIn();		
+		resetMenu();
+		selectedMenu("#timeZone");
+		
+		// if(readCookie("currentTimeZone") != undefined){
+		// 	console.log("Current Time zone :" + readCookie("currentTimeZone"));
+		// 	$("select option:selected").text(readCookie("currentTimeZone"));
+		// }
+		loadTimeZonesPage(); 
+		$("#chageTimeZone").click(function(){
+			var selectedTimeZone = $("select option:selected").text();
+			// updateTimeZone(selectedTimeZone);
+			saveTimeZone(selectedTimeZone);
+			
+		});
+
+	});	
+</script>

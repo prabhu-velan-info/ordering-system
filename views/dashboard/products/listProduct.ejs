@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<% include ../../header %>
+<div class="container">
+		<legend>
+				<center>PRODUCTS LISTS</center>
+		</legend>
+		<form id = "myForm">
+				<center>
+					<div class="form-group" class="error"> 
+								<div id = "state">
+									 <% if (message.length > 0) { %>	
+								    	<h3 id="error" class="alert alert-success "><%= message %></h3>
+									 <% } %>
+								</div> 
+								<!-- To display the loading button -->
+							    <div id="loading" align="center"></div>
+					</div>
+				<!-- 	<div class="form-group">
+					    <label for="inputName">Search By ID</label>
+					    <div>
+					    	<input type="text" name = "name" id = "searchText" class="form-control" placeHolder = "ID" required>
+					    </div>
+					  </div>
+ -->					
+					<table id="productsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				        <thead>
+				            <tr>
+				                <th>Product Name</th>
+				                <th>Category Name</th>
+				                <th>Price</th>
+				                <th>Discount Percent</th>
+				                <th>Sale Price</th>
+				                <th>Quantity</th>
+				                <th>In Stock</th>
+				                <th>Start Date</th>
+				                <th>End Date</th>
+				                <th>Image</th>
+				                <th>Options</th>
+				            </tr>
+				        </thead>
+				 
+				        <tfoot>
+				            <tr>
+				                <th>Product Name</th>
+				                <th>Category Name</th>
+				                <th>Price</th>
+				                <th>Discount Percent</th>
+				                <th>Sale Price</th>
+				                <th>Quantity</th>
+				                <th>In Stock</th>
+				                <th>Start Date</th>
+				                <th>End Date</th>
+				                <th>Image</th>
+				                <th>Options</th>
+				            </tr>
+				        </tfoot>
+				 
+				        <tbody>
+<!-- 				            <tr>
+								<td></td>
+				                <td></td>
+				                <td style="text-align:center">No users found...</td>
+				                <td></td>
+				                <td></td>
+
+				               <td colspan="5" style="text-align:center;"> No users found...</td>
+				            </tr>
+				            -->
+				        </tbody>
+				    </table>	
+				</center>
+		</form>
+</div>	
+<% include ../../footer %>
+
+<script>
+	//This will execute once the Document Ready
+	$(document).ready(function(){
+		loggedIn();		
+		resetMenu();
+		selectedMenu("#products");
+		showCrud();
+		selectedMenu("#list");
+		//reset the Curd Actions
+		resetCRUDAction("products");
+		loadProductLists();
+	});	
+</script>

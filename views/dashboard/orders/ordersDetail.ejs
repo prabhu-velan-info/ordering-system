@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<% include ../../header %>
+	
+
+<div class="container">
+		
+				<center>
+					
+					<div class="form-group" class="error"> 
+								<div id = "state">
+									 <% if (message != undefined) { %>	
+								    	<h3 id="error" class="alert alert-success "><%= message %></h3>
+									 <% } %>
+								</div> 
+								<!-- To display the loading button -->
+							    <div id="loading" align="center"></div>
+					</div>
+
+					<div id="ordersCount">
+						<table id="todaysOrders" class="table table-striped table-bordered" cellspacing="0"  width="100%">
+					        <thead>
+					        	 <tr>
+					                <th colspan="5"  style="text-align: center;" >Today's Orders</th>				            
+					            </tr>
+					            <tr>
+					                <th>New</th>
+					                <th>Pending</th>
+					                <th>Confirmed</th>
+					                <th>Cancelled</th>
+					                <th>Delivered</th>
+					            </tr>
+					        </thead>				
+
+					        <tbody>
+					        	<tr>
+					        		<td>0</td>
+					        		<td>0</td>
+					        		<td>0</td>
+					        		<td>0</td>
+					        		<td>0</td>
+					 			</tr>
+					        </tbody>
+					    </table>	
+					</div>				  	
+				</center>
+				<div class="row">
+				<legend>
+						<center><span id="head">Orders Detail</span></center>
+				</legend>
+				<!-- Row content-->
+				<div class ="col-sm-3 col-sm-offset-3">
+					<form class="form-horizontal">
+					 
+					  <div class="form-group">
+					    <label for="inputName" class="col-sm-6 control-label">Customer Name</label>
+					    <div class="col-sm-13">
+					    	<input type="text" value = "<%= data.customerName %>" name = "customerName" id = "customerName" class="form-control" placeHolder = "customerName" disabled>
+					    </div>
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="inputEmail" class="col-sm-6 control-label">Placed Date</label>
+					    <div class="col-sm-13">
+					    	<input type="text" value = "<%= data.placedDate %>" name = "placedDate" id = "placedDate" class="form-control" placeHolder = "placedDate" disabled>
+					    </div>
+					  </div>
+				  		
+				  	  <div class="form-group">
+					    <label for="inputPrice" class="col-sm-6 control-label">Total Price</label>
+					    <div class="col-sm-13">
+					    	<input type="text" value = "<%= data.totalPrice %>" name = "totalPrice" id = "totalPrice" class="form-control" placeHolder = "totalPrice" disabled>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputQuantity" class="col-sm-6 control-label">Total Quantity</label>
+					    <div class="col-sm-13">
+					    	<input type="text" value = "<%= data.totalQuantity %>" name = "totalQuantity" id = "totalQuantity" class="form-control" placeHolder = "totalQuantity" disabled>
+					    </div>
+					  </div>
+					   <div class="form-group">
+					    <label for="inputQuantity" class="col-sm-6 control-label">Order Status</label>
+					    <div class="col-sm-13">
+					    	<input type="text" value = "<%= data.OrderStatus.status %>" name = "orderStatus" id = "orderStatus" class="form-control" placeHolder = "orderStatus" disabled>
+					    </div>
+					  </div>					 
+					</form>
+
+
+				</div>
+				
+			</div>
+			<table id="productDetail" class="table table-striped table-bordered" cellspacing="0"  width="100%">
+		        <thead>
+		        	 <tr>
+		                <th colspan="4"  style="text-align: center;" >Product Info</th>				            
+		            </tr>
+		            <tr>
+		                <th>Product Name</th>		                
+		                <th>Quantity</th>
+		                <th>Price</th>
+		                <th>Date</th>
+		            </tr>
+		        </thead>				
+
+		        <tbody>
+		        	<% for(var loop = 0; loop < data.Orders.length; loop++) { %>
+	        			<tr>
+	        				
+	        				<td>
+	        					<%= data.Orders[loop].productName %>		
+	        				</td>
+	        				<td>
+	        					<%= data.Orders[loop].quantity %>		
+	        				</td>
+	        				<td>
+	        					<%= data.Orders[loop].totalPrice %>		
+	        				</td>
+	        				<td>
+	        					<%= new Date(data.Orders[loop].createdAt).toLocaleDateString() %>		
+	        				</td>
+	        			</tr>
+	        		<% } %>
+		        </tbody>
+		    </table>	
+</div>	
+
+<% include ../../footer %>
+
+<script>
+	$(document).ready(function(){
+		
+
+		// EnableAutoComplete("#deliveryPerson", "/searchDeliveryPerson/", "name");
+		resetMenu();		
+		// showOrders();
+		selectedMenu("#orders");
+		loadTodaysOrdersCount();
+		loggedIn();
+		showOrders();
+		$("#allOrders").html("Back");
+		$("#newOrders").css('display','none');
+		$("#pendingOrders").css('display','none');
+		$("#confirmedOrders").css('display','none');
+		$("#deliveredOrders").css('display','none');
+		$("#cancelledOrders").css('display','none');
+		$("#ordersMenu").css('width','10%');
+		
+	});	
+</script>

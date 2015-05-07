@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title><%= title %></title>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/javascripts/order.js"></script>
+    <script src="/javascripts/moment.min.js"></script>
+    <script src="/javascripts/timezones.full.js"></script>
+
+    <!-- Adding Bootstrap 3  -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>  
+    
+    <!-- for Date Picker -->
+    <link rel="stylesheet" href="/stylesheets/datepicker.css">
+    <script src="/javascripts/bootstrap-datepicker.js"></script>
+    
+    <!-- Auto Complete Feature -->
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+     <!-- Adding for Pagination  -->
+    <script src="//cdn.datatables.net/1.10.6/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    
+    <!--socket access-->
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+      
+    
+</head>
+<body>
+
+<header>
+
+  <div id="menu">    
+    <ul>
+      <li>
+        <span style="padding:20px;display:block;font-size: 16px"><strong>Ordering system</strong></span>
+      </li>
+
+      <li>
+        <a href ="/" id="home">Home</a>
+      </li>
+      <div id="adminOptions">
+        <li>
+          <a href ="/addCategory" id="category">Categories</a>
+        </li>
+
+        <li>
+          <a href ="/addProduct" id="products">Products</a>
+        </li>
+
+        <li>
+          <a href ="/addAdmin"  id="admin">Admin</a>      
+        </li>
+
+        <li>
+          <a href ="/addDeliveryPerson"  id="DeliveryPersons">Delivery Persons</a>      
+        </li>
+        
+        <li>
+          <a href ="/addCustomer"  id="customers">Customers</a>      
+        </li>
+
+        <li>
+          <a href ="/allOrdersList"  id="orders">Orders</a>      
+        </li>
+
+        <li>
+          <a href ="/settings"  id="settings">Settings</a>      
+        </li>
+
+        <li>
+          <a href ="/timeZone"  id="timeZone">Timezones</a>      
+        </li>
+        
+      </div>
+      <li style="float:right">
+        <a href ="/login" id = "log" style="background-color: #222222">Login</a>      
+      </li>
+
+    </ul>
+  </div>
+  <!-- Notification section -->
+  <div id = "notification">
+
+  </div>
+
+
+   <div id="crud" style="display:none;">    
+    <ul>
+      <li>
+        <a href ="#" id = "add">Add</a>
+      </li>
+
+   <!--   <li>
+        <a href ="#" id = "edit">Edit</a>
+      </li> -->
+
+      <li>
+        <a href ="#" id = "list">List</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="ordersMenu" style="display:none;">    
+    <ul>
+
+      <li>
+        <a href ="/allOrdersList" id = "allOrders">All</a>
+      </li>
+
+      <li>
+        <a href="#" id = "newOrders">New</a>
+      </li>
+
+
+      <li>
+        <a href="#" id = "pendingOrders">Pending</a>
+      </li>
+
+
+      <li>
+        <a href="#" id = "confirmedOrders">Confirmed</a>
+      </li>
+
+
+      <li>
+        <a href="#" id = "deliveredOrders">Delivered</a>
+      </li>
+
+      <li>
+        <a href="#" id = "cancelledOrders">Cancelled</a>
+      </li>
+
+    </ul>
+  </div>
+
+</header>
